@@ -1,0 +1,197 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document properties and packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,12pt,final]{memoir}
+
+% misc
+
+\renewcommand{\familydefault}{bch}	% font
+\pagestyle{empty}					% no pagenumbering
+\setlength{\parindent}{0pt}			% no paragraph indentation
+
+
+% required packages (add your own)
+\usepackage{flowfram}% column layou
+\usepackage{marvosym}
+\usepackage{textcomp}
+
+\usepackage[top=1cm,left=1cm,right=1cm,bottom=1cm]{geometry}% margins
+\usepackage{graphicx}										% figures
+\usepackage{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}  %蓝色
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}										% URLs
+\usepackage[usenames,dvipsnames]{xcolor}					% color
+\usepackage{multicol}										% columns env.
+	\setlength{\multicolsep}{0pt}
+\usepackage{paralist}										% compact lists
+\usepackage{tikz}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Create column layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%定义主题颜色，可选颜色 Maroon，ForestGreen，DarkOrchid，RoyalBlue,Turquoise,Cyan,etc,更多颜色参考xcolor包的颜色定义
+\newcommand{\myThemeColor}{Maroon}
+% define length commands
+\setlength{\vcolumnsep}{\baselineskip}
+\setlength{\columnsep}{\vcolumnsep}
+
+% frame setup (flowfram package)
+% left frame
+\newflowframe{0.23\textwidth}{\textheight}{0pt}{0pt}[left]
+	\newlength{\LeftMainSep}
+	\setlength{\LeftMainSep}{0.23\textwidth}
+	\addtolength{\LeftMainSep}{1\columnsep}
+ 
+% small static frame for the vertical line
+\newstaticframe{1.5pt}{\textheight}{\LeftMainSep}{0pt}
+ 
+% content of the static frame
+\begin{staticcontents}{1}
+\hfill
+\tikz{%
+	\draw[loosely dotted,color=\myThemeColor,line width=1.5pt,yshift=0]
+	(0,0) -- (0,\textheight);}%
+\hfill\mbox{}
+\end{staticcontents}
+ 
+% right frame
+\addtolength{\LeftMainSep}{1.5pt}
+\addtolength{\LeftMainSep}{1\columnsep}
+\newflowframe{0.7\textwidth}{\textheight}{\LeftMainSep}{0pt}[main01]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% define macros (for convience)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Sep}{\vspace{1em}}
+\newcommand{\SmallSep}{\vspace{0.9em}}
+
+\newcommand{\smallsep}{\vspace{0.45em}}
+\newenvironment{AboutMe}
+	{\ignorespaces\textbf{\color{\myThemeColor} About me}}
+	{\Sep\ignorespacesafterend}
+	
+\newcommand{\CVSection}[1]
+	{\Large\textbf{\textsf{#1}}\par
+	\smallsep\normalsize\normalfont}
+
+\newcommand{\CVItem}[1]
+	{\textbf{\color{\myThemeColor} #1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+% Left frame
+%%%%%%%%%%%%%%%%%%%%
+\begin{figure}
+	\hfill
+	\includegraphics[width=0.8\columnwidth]{photo}
+	\vspace{-7cm}
+\end{figure}
+\begin{flushright}\footnotesize
+.\\
+\vskip 6cm
+    \raggedright
+	\CVItem{{\large Personnel Infos:}}\\
+	Email:\\
+	\href{mailto:hahaha@sina.com}{hahaha@sina.com}  \\
+	Personnel site:\\
+	\href{http://zhangleipro.jimdo.com/}{zhangleipro.jimdo.com} \\
+	Telephone:\\
+	+33 - 0000000000(France)
+	+86 - 0000000000(China)
+		
+	\CVItem{{\large Language:}}\\
+	\textit{\textbf{Chinese}: Maternal \\\textbf{English}: IETS 7.0/9.5\\ \textbf{French}:\\ TEF: B2/C2(French international evaluation system)\\DELF: B2(French lifelong valid degree)}
+	
+	\CVItem{{\large Computer skills:}}\\
+	$\bullet$\textbf{Programing Language:}\\ Java/Python/ActionScript and C++, Matlab, Mathicmatica,  Laview, Swift, HTML5\\
+	$\bullet$\textbf{Working Software:}\\ Excel/PowerPoint/Word, PS, and AfterEffect \\
+	$\bullet$\textbf{Scientific Software:}\\ ADAMS, COMSOL, FLUENT and FLEXPDE \\
+	\SmallSep
+	\textit{Can make lightweight apps for Android and Windows Mobile. Proficient in using \LaTeX~and power user of LINUX}
+	
+	\CVItem{{\large Hobby:}}\\
+	\textit{Jogging, Traveling, Photographing, Fitness, Guitar}
+	\SmallSep
+\end{flushright}\normalsize
+\framebreak
+
+
+% Right frame
+%%%%%%%%%%%%%%%%%%%%
+\Huge\bfseries {\color{\myThemeColor} JAY \textsc{ZHOU}}\\
+\normalsize\normalfont
+
+% Education
+\CVSection{EDUCATIONS}
+\hrule
+\SmallSep
+\CVItem{2015-present\hfill\textsc{Lorraine University, France}}\\
+\textit{-Department of Mechanic and Energy}\\
+\textit{-Master Degree}
+\\
+\CVItem{2014-present\hfill\textsc{\'{E}cole Des Mines Nancy, France}}\\
+\textit{-Department of Energy production and transformation}\\
+\textit{-Master Degree and France engineer degree}
+\\
+\CVItem{Jun 2013-Sept 2013\hfill\textsc{Purdue University, Usa}}\\
+\textit{-Summer courses}
+\\
+\CVItem{Sept 2010-Jun 2014~~~\textsc{Shanghai Jiao Tong University(SJTU), China}}\\
+\textit{-Department of Physics\\
+-School of Thermal Energy and Power Engineering}\\
+\textit{-Bachelor Degree}
+
+% Experience
+\CVSection{INTERNSHIPS}
+\hrule
+\SmallSep
+\CVItem{Mar 2016-Aug 2016 \hfill Segula Technologies, France}\\
+\textit{$\bullet$ Internship in France as calculate engineer, Studying and optimizing the vibrational and noisy effect of power train for electrical cars by ADAMS}
+\\
+\CVItem{Oct 2015-present \hfill Entrepreneurial Project, France}\\
+\textit{$\bullet$As the project leader, starting a entrepreneurial project, which aims to create a platform where the French and Chinese society can share their projects and cooperate together} 
+\\
+\CVItem{July 2013-Sept 2013\hfill The Schlumberger, China}\\
+\textit{$\bullet$ Internship in Chengdu base as Field Engineer of petrol service}
+\\
+\CVItem{Dec 2011-Mar 2012\hfill KaiXin SNS company, China}\\
+\textit{$\bullet$ Internship in campus for marketing development}
+
+% CAMPU
+\CVSection{PROFESSIONAL ACTIVITIES}
+\hrule
+\SmallSep
+\CVItem{Apr 2012-Mar 2013, Innovation Practice Program(IPP)\hfill\emph{Researcher}}\\
+\textit{$\bullet$ Participate in IPP, and set up a research project about monitoring and measuring laser focus spot in vacuum chamber } 
+\\
+\CVItem{May 2013-Sept 2013, Energy cooperation team\hfill\emph{Research Specialist}}\\
+\textit{$\bullet$ Surveying the energy demand and consumption situation in China mainland} 
+\\
+\CVItem{Feb 2013-Oct 2013, Audi Green-Power Competition\hfill\emph{Team Leader}}\\
+\textit{$\bullet$ First price, our project is"new intelligent bus waiting Platform", i was responsible for Electrical system design and computer modeling}
+\\
+\CVItem{Jun 2012-Sept 2012, Social Internship\hfill\emph{Team Leader}}\\
+\textit{$\bullet$ Organize one team consist of 16 members, surveying the vicious circle of poverty and collect first hand infos from poverty families.} 
+
+% HONORS & SCHOLARSHIPS
+\CVSection{HONORS \& SCHOLARSHIPS}
+\hrule
+\SmallSep
+\begin{tabular}{l|l}
+	$\Rightarrow$Oct 2014&\textit{France Excellence,Prize of Ambassador France}\footnotesize\\
+	$\Rightarrow$Oct 2013&\textit{First price of Audi Green-Power Innovation Competition}\\
+	$\Rightarrow$Dec 2012&\textit{ChenXin enterprise scholarship}\\
+	$\Rightarrow$Dec 2012&\textit{Academic award of SJTU for 3 years}\\
+	$\Rightarrow$Apr 2011&\textit{Excellent project for Social Internship of Shanghai}\footnotesize\\
+
+\end{tabular}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
